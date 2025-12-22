@@ -1,0 +1,17 @@
+__backgrounds/studio__ $2
+__backgrounds/urban__ $3
+__backgrounds/interiors__ $3
+__backgrounds/textures__ $4
+__backgrounds/patterns__ $2
+__backgrounds/space__ $1
+__backgrounds/underwater__ $1
+__backgrounds/fantasy__ $1
+__backgrounds/scifi__ $1
+__backgrounds/nature/desert__ $2
+__backgrounds/nature/tropical__ $2
+__backgrounds/nature/temperate__ $2
+__backgrounds/nature/mountain__ $2
+__backgrounds/nature/polar__ $1
+__backgrounds/nature/coastal__ $2
+__backgrounds/nature/wetlands__ $1
+__backgrounds/nature/cave__ $1

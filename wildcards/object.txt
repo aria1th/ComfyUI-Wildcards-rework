@@ -1,0 +1,16 @@
+__objects/studio/main__ $2
+__objects/urban/main__ $3
+__objects/interiors/main__ $3
+__objects/industrial/main__ $2
+__objects/desert/main__ $2
+__objects/tropical/main__ $2
+__objects/temperate/main__ $2
+__objects/mountain/main__ $2
+__objects/polar/main__ $1
+__objects/wetlands/main__ $1
+__objects/coastal/main__ $2
+__objects/cave/main__ $1
+__objects/underwater/main__ $1
+__objects/space/main__ $1
+__objects/fantasy/main__ $1
+__objects/scifi/main__ $1

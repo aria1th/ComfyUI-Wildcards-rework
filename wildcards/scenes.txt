@@ -1,0 +1,48 @@
+SUBJECT: __objects/studio/main__ || BACKGROUND: __backgrounds/studio__ || STYLE: clean studio product shot, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $2
+SUBJECT: __objects/studio/main__ || BACKGROUND: __backgrounds/studio__ || STYLE: clean studio product shot, __modifiers/lighting__, __modifiers/camera__ $2
+SUBJECT: __objects/studio/main__ || BACKGROUND: __backgrounds/studio__ || STYLE: clean studio product shot, __modifiers/mood__ $2
+SUBJECT: __objects/urban/main__ || BACKGROUND: __backgrounds/urban__ || STYLE: street photography, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $3
+SUBJECT: __objects/urban/main__ || BACKGROUND: __backgrounds/urban__ || STYLE: street photography, __modifiers/lighting__, __modifiers/camera__ $3
+SUBJECT: __objects/urban/main__ || BACKGROUND: __backgrounds/urban__ || STYLE: street photography, __modifiers/mood__ $3
+SUBJECT: __objects/interiors/main__ || BACKGROUND: __backgrounds/interiors__ || STYLE: interior lifestyle scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $3
+SUBJECT: __objects/interiors/main__ || BACKGROUND: __backgrounds/interiors__ || STYLE: interior lifestyle scene, __modifiers/lighting__, __modifiers/camera__ $3
+SUBJECT: __objects/interiors/main__ || BACKGROUND: __backgrounds/interiors__ || STYLE: interior lifestyle scene, __modifiers/mood__ $3
+SUBJECT: __objects/industrial/main__ || BACKGROUND: __backgrounds/industrial__ || STYLE: industrial documentary scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $2
+SUBJECT: __objects/industrial/main__ || BACKGROUND: __backgrounds/industrial__ || STYLE: industrial documentary scene, __modifiers/lighting__, __modifiers/camera__ $2
+SUBJECT: __objects/industrial/main__ || BACKGROUND: __backgrounds/industrial__ || STYLE: industrial documentary scene, __modifiers/mood__ $2
+SUBJECT: __objects/desert/main__ || BACKGROUND: __backgrounds/nature/desert__ || STYLE: desert outdoor scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $2
+SUBJECT: __objects/desert/main__ || BACKGROUND: __backgrounds/nature/desert__ || STYLE: desert outdoor scene, __modifiers/lighting__, __modifiers/camera__ $2
+SUBJECT: __objects/desert/main__ || BACKGROUND: __backgrounds/nature/desert__ || STYLE: desert outdoor scene, __modifiers/mood__ $2
+SUBJECT: __objects/tropical/main__ || BACKGROUND: __backgrounds/nature/tropical__ || STYLE: tropical outdoor scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $2
+SUBJECT: __objects/tropical/main__ || BACKGROUND: __backgrounds/nature/tropical__ || STYLE: tropical outdoor scene, __modifiers/lighting__, __modifiers/camera__ $2
+SUBJECT: __objects/tropical/main__ || BACKGROUND: __backgrounds/nature/tropical__ || STYLE: tropical outdoor scene, __modifiers/mood__ $2
+SUBJECT: __objects/temperate/main__ || BACKGROUND: __backgrounds/nature/temperate__ || STYLE: temperate outdoor scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $3
+SUBJECT: __objects/temperate/main__ || BACKGROUND: __backgrounds/nature/temperate__ || STYLE: temperate outdoor scene, __modifiers/lighting__, __modifiers/camera__ $3
+SUBJECT: __objects/temperate/main__ || BACKGROUND: __backgrounds/nature/temperate__ || STYLE: temperate outdoor scene, __modifiers/mood__ $3
+SUBJECT: __objects/mountain/main__ || BACKGROUND: __backgrounds/nature/mountain__ || STYLE: mountain outdoor scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $2
+SUBJECT: __objects/mountain/main__ || BACKGROUND: __backgrounds/nature/mountain__ || STYLE: mountain outdoor scene, __modifiers/lighting__, __modifiers/camera__ $2
+SUBJECT: __objects/mountain/main__ || BACKGROUND: __backgrounds/nature/mountain__ || STYLE: mountain outdoor scene, __modifiers/mood__ $2
+SUBJECT: __objects/polar/main__ || BACKGROUND: __backgrounds/nature/polar__ || STYLE: polar outdoor scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $1
+SUBJECT: __objects/polar/main__ || BACKGROUND: __backgrounds/nature/polar__ || STYLE: polar outdoor scene, __modifiers/lighting__, __modifiers/camera__ $1
+SUBJECT: __objects/polar/main__ || BACKGROUND: __backgrounds/nature/polar__ || STYLE: polar outdoor scene, __modifiers/mood__ $1
+SUBJECT: __objects/wetlands/main__ || BACKGROUND: __backgrounds/nature/wetlands__ || STYLE: wetlands outdoor scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $1
+SUBJECT: __objects/wetlands/main__ || BACKGROUND: __backgrounds/nature/wetlands__ || STYLE: wetlands outdoor scene, __modifiers/lighting__, __modifiers/camera__ $1
+SUBJECT: __objects/wetlands/main__ || BACKGROUND: __backgrounds/nature/wetlands__ || STYLE: wetlands outdoor scene, __modifiers/mood__ $1
+SUBJECT: __objects/coastal/main__ || BACKGROUND: __backgrounds/nature/coastal__ || STYLE: coastal outdoor scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $2
+SUBJECT: __objects/coastal/main__ || BACKGROUND: __backgrounds/nature/coastal__ || STYLE: coastal outdoor scene, __modifiers/lighting__, __modifiers/camera__ $2
+SUBJECT: __objects/coastal/main__ || BACKGROUND: __backgrounds/nature/coastal__ || STYLE: coastal outdoor scene, __modifiers/mood__ $2
+SUBJECT: __objects/cave/main__ || BACKGROUND: __backgrounds/nature/cave__ || STYLE: cave exploration scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $1
+SUBJECT: __objects/cave/main__ || BACKGROUND: __backgrounds/nature/cave__ || STYLE: cave exploration scene, __modifiers/lighting__, __modifiers/camera__ $1
+SUBJECT: __objects/cave/main__ || BACKGROUND: __backgrounds/nature/cave__ || STYLE: cave exploration scene, __modifiers/mood__ $1
+SUBJECT: __objects/underwater/main__ || BACKGROUND: __backgrounds/underwater__ || STYLE: underwater scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $1
+SUBJECT: __objects/underwater/main__ || BACKGROUND: __backgrounds/underwater__ || STYLE: underwater scene, __modifiers/lighting__, __modifiers/camera__ $1
+SUBJECT: __objects/underwater/main__ || BACKGROUND: __backgrounds/underwater__ || STYLE: underwater scene, __modifiers/mood__ $1
+SUBJECT: __objects/space/main__ || BACKGROUND: __backgrounds/space__ || STYLE: space scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $1
+SUBJECT: __objects/space/main__ || BACKGROUND: __backgrounds/space__ || STYLE: space scene, __modifiers/lighting__, __modifiers/camera__ $1
+SUBJECT: __objects/space/main__ || BACKGROUND: __backgrounds/space__ || STYLE: space scene, __modifiers/mood__ $1
+SUBJECT: __objects/fantasy/main__ || BACKGROUND: __backgrounds/fantasy__ || STYLE: fantasy scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $1
+SUBJECT: __objects/fantasy/main__ || BACKGROUND: __backgrounds/fantasy__ || STYLE: fantasy scene, __modifiers/lighting__, __modifiers/camera__ $1
+SUBJECT: __objects/fantasy/main__ || BACKGROUND: __backgrounds/fantasy__ || STYLE: fantasy scene, __modifiers/mood__ $1
+SUBJECT: __objects/scifi/main__ || BACKGROUND: __backgrounds/scifi__ || STYLE: sci-fi scene, __modifiers/camera__, __modifiers/lighting__, __modifiers/mood__ $1
+SUBJECT: __objects/scifi/main__ || BACKGROUND: __backgrounds/scifi__ || STYLE: sci-fi scene, __modifiers/lighting__, __modifiers/camera__ $1
+SUBJECT: __objects/scifi/main__ || BACKGROUND: __backgrounds/scifi__ || STYLE: sci-fi scene, __modifiers/mood__ $1

@@ -1,0 +1,4 @@
+__scenes__
+__scenes__, {highly detailed|minimalist|photorealistic|illustration style}
+__scenes__, {35mm film look|digital photo|cinematic color grading|soft pastel palette}
+__scenes__, {sharp focus|soft focus}, {natural colors|high saturation|muted tones}
