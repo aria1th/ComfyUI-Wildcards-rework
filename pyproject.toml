@@ -29,7 +29,7 @@ Documentation = "https://github.com/aria1th/ComfyUI-Wildcards-rework/wiki"
 "Bug Tracker" = "https://github.com/aria1th/ComfyUI-Wildcards-rework/issues"
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "angelbottomless"
 DisplayName = "ComfyUI-Wildcards-rework"
 Icon = ""
 includes = [] 
