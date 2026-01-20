@@ -15,6 +15,7 @@ A powerful ComfyUI custom node for **dynamic prompt generation** using wildcards
 | **Range Pick** | `{N-M$$a\|b\|c}` | `{1-3$$a\|b\|c\|d}` → `b, d` |
 | **Custom Separator** | `{N$$sep$$...}` | `{2$$ and $$a\|b\|c}` → `a and c` |
 | **Nested Expansion** | `{a\|{b\|c}}` | Full recursive support |
+| **History Recall** | `__name[0]__` | `__gname__ ... __gname[0]__` → repeats last pick |
 
 ---
 
@@ -41,6 +42,7 @@ git clone <repository-url> ComfyUI_Randomizer
 | `text` | STRING | Prompt template with wildcards/brackets |
 | `seed` | INT | Random seed for reproducibility |
 | `refresh` | INT | Set to `1` to reload wildcard files |
+| `n_keep_history` | INT | Keep last N results per wildcard for `__name[0]__` recall |
 
 ### Outputs
 
@@ -84,6 +86,14 @@ __filename__
 
 # Random from inline options  
 {option1|option2|option3}
+```
+
+### History Recall
+
+```text
+# After expanding __gname__ at least once, recall recent results:
+__gname[0]__   # most recent
+__gname[1]__   # previous
 ```
 
 ### Weighted Selection

@@ -5,6 +5,7 @@ Wildcard / prompt expander with:
   - {a|b|c} choice groups (supports nesting)
   - {N$$sep$$a|b|c} / {N-M$$sep$$a|b|c} multi-pick groups
   - Per-option weights via trailing $N (e.g. "blue$3")
+  - Wildcard history recall via __name[0]__ / __name[1]__ (most recent / previous)
 
 Design goals vs the original version:
   - Deterministic RNG per call (no global random.seed side effects)
@@ -15,6 +16,8 @@ Design goals vs the original version:
 
 Notes on syntax:
   - __pattern__ uses fnmatch-style patterns (e.g. __colors__ or __animals/*__)
+  - __name[0]__ recalls the most recent expanded result for 'name' (0-based index; [1] is the previous, etc.)
+    Example: "__gname__ ... __gname[0]__" repeats the same generated name later in the prompt.
   - {a|b|c} chooses one option (weights supported: {a$1|b$3})
   - {2$$, $$a|b|c} chooses 2 distinct options and joins with ", "
   - {2-4$$ / $$a|b|c} chooses a random number between 2 and 4 (inclusive)
@@ -263,6 +266,7 @@ class ExpanderConfig:
     validate_input_brackets: bool = True
     normalize_commas: bool = True
     allow_backslash_escapes: bool = True
+    keep_history: int = 100
 
 
 class PromptExpander:
@@ -277,11 +281,20 @@ class PromptExpander:
     """
 
     _WEIGHT_RE = re.compile(r"^(.*?)(?:\$(\d+))?$")
+    _HISTORY_REF_RE = re.compile(r"^(?P<key>.+?)\[(?P<index>\d+)\]$")
 
-    def __init__(self, library: WildcardLibrary, rng: random.Random, config: Optional[ExpanderConfig] = None) -> None:
+    def __init__(
+        self,
+        library: WildcardLibrary,
+        rng: random.Random,
+        config: Optional[ExpanderConfig] = None,
+        *,
+        history: Optional[Dict[str, List[str]]] = None,
+    ) -> None:
         self.lib = library
         self.rng = rng
         self.cfg = config or ExpanderConfig()
+        self.history = history if history is not None else {}
 
     def expand(self, text: str) -> str:
         if text is None or not isinstance(text, str):
@@ -514,6 +527,10 @@ class PromptExpander:
         return chosen
 
     def _expand_card(self, pattern: str, *, depth: int, card_stack: Tuple[str, ...]) -> str:
+        history_key, history_index = self._parse_history_reference(pattern)
+        if history_key is not None:
+            return self._get_history_value(history_key, history_index)
+
         if not self.lib.loaded:
             self.lib.load()
 
@@ -527,7 +544,34 @@ class PromptExpander:
         if key in card_stack:
             raise ValueError(f"Detected recursive wildcard cycle: {' -> '.join(card_stack + (key,))}")
 
-        return self._expand_text(line, depth=depth + 1, card_stack=card_stack + (key,))
+        expanded = self._expand_text(line, depth=depth + 1, card_stack=card_stack + (key,))
+        self._record_history(key, expanded)
+        if pattern != key:
+            self._record_history(pattern, expanded)
+        return expanded
+
+    def _parse_history_reference(self, pattern: str) -> Tuple[Optional[str], int]:
+        m = self._HISTORY_REF_RE.match(pattern)
+        if not m:
+            return None, 0
+        return m.group("key"), int(m.group("index"))
+
+    def _get_history_value(self, key: str, index: int) -> str:
+        items = self.history.get(key) or []
+        if index < 0:
+            raise ValueError(f"History index must be >= 0 (got {index}) for {key!r}")
+        if index >= len(items):
+            raise ValueError(f"History for {key!r} has only {len(items)} item(s); cannot access index {index}")
+        return items[index]
+
+    def _record_history(self, key: str, value: str) -> None:
+        keep = int(self.cfg.keep_history)
+        if keep <= 0:
+            return
+        items = self.history.setdefault(key, [])
+        items.insert(0, value)
+        if len(items) > keep:
+            del items[keep:]
 
 
 
@@ -542,6 +586,8 @@ class TextWildcards:
 
     # Library is module-level cached for performance.
     _LIB = WildcardLibrary(Path(__file__).resolve().parent / "wildcards", recursive=True)
+    _HISTORY_LOCK = threading.RLock()
+    _HISTORY: Dict[str, Dict[str, List[str]]] = {}
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -550,6 +596,10 @@ class TextWildcards:
                 "text": ("STRING", {"multiline": True, "dynamicPrompts": False}),
                 "seed": ("INT", {"default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF}),
                 "refresh": ("INT", {"default": 0, "min": 0, "max": 1}),
+                "n_keep_history": ("INT", {"default": 100, "min": 0, "max": 100000}),
+            },
+            "hidden": {
+                "unique_id": "UNIQUE_ID",
             }
         }
 
@@ -558,7 +608,14 @@ class TextWildcards:
     FUNCTION = "encode"
     CATEGORY = "Randomizer"
 
-    def encode(self, seed: int, text: str, refresh: int):
+    def encode(
+        self,
+        seed: int,
+        text: str,
+        refresh: int,
+        n_keep_history: int,
+        unique_id: Optional[str] = None,
+    ):
         # Local RNG; does not touch global random state.
         rng = random.Random(int(seed))
 
@@ -567,8 +624,23 @@ class TextWildcards:
         elif not self._LIB.loaded:
             self._LIB.load()
 
-        expander = PromptExpander(self._LIB, rng)
-        expanded = expander.expand(text)
+        keep = max(0, int(n_keep_history))
+        uid = unique_id or "__default__"
+
+        with self._HISTORY_LOCK:
+            history = self._HISTORY.setdefault(uid, {})
+            if keep <= 0:
+                history.clear()
+            else:
+                for k, v in list(history.items()):
+                    if not v:
+                        history.pop(k, None)
+                        continue
+                    if len(v) > keep:
+                        del v[keep:]
+
+            expander = PromptExpander(self._LIB, rng, ExpanderConfig(keep_history=keep), history=history)
+            expanded = expander.expand(text)
 
         ascii_text = expanded.encode("ascii", "replace").decode("ascii")
         return (expanded, ascii_text)
