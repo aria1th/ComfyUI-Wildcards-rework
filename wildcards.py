@@ -594,7 +594,13 @@ class TextWildcards:
         return {
             "required": {
                 "text": ("STRING", {"multiline": True, "dynamicPrompts": False}),
-                "seed": ("INT", {"default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF}),
+                "seed": ("INT", {
+                    "default": 0,
+                    "min": 0,
+                    "max": 0xFFFFFFFFFFFFFFFF,
+                    "control_after_generate": True,
+                    "tooltip": "Random seed for deterministic wildcard expansion.",
+                }),
                 "refresh": ("INT", {"default": 0, "min": 0, "max": 1}),
                 "n_keep_history": ("INT", {"default": 100, "min": 0, "max": 100000}),
             },
